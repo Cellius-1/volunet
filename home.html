@@ -43,14 +43,12 @@
     <p>VoluNet is a platform which aims to make volunteering and community service easily accessible for those who may require it. Through VoluNet, aspiring volunteers can search for opportunities near them. Recruiting companies and services can post applications, with registration easily accessible. Users have a profile, which can keep track of all the service they have completed, and signal to companies their level of proficiency.</p>
     <div id="demo"></div>
     <div class="login-container">
-        <form id="startButton">
-            <input type="submit" value="Start">
-        </form>
+    <button onclick="startButton(event)"type="button" class="custom-submit">Begin</button>
         <script>
-            document.getElementById("startButton").addEventListener("submit", function(event) {
-                event.preventDefault();
-                window.location.href = "search.html";
-            });
+            function startButton(event) {
+              event.preventDefault();
+              window.location.href = "search.html";
+        }
 
             var username = localStorage.getItem("username");
 
