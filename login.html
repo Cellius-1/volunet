@@ -23,16 +23,20 @@
     <div class="login-container">
         <h2>Login</h2>
         <form id="loginForm">
-            <input type="text" name="username" placeholder="Username">
-            <input type="password" name="password" placeholder="Password">
+            <input type="text" id="username" name="username" placeholder="Username">
+            <input type="password" id="password" name="password" placeholder="Password">
             <button type="submit" class="custom-submit">Login</button> <!-- Changed from input to button -->
         </form>
-        <script>
+    </div>
+
+    <script>
         document.getElementById("loginForm").addEventListener("submit", function(event) {
             event.preventDefault();
-            window.location.href = "home.html";
+            var username = document.getElementById("username").value; 
+            console.log("Username:", username); 
+            localStorage.setItem("username", username); 
+            window.location.href = "home.html"; 
         });
     </script>
-    </div>
 </body>
 </html>
