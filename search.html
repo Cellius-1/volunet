@@ -51,7 +51,16 @@
                             "<p>Address: " + item.address + "</p>" +
                             "<p>Time: " + item.time + "</p>" +
                             "<p>Date: " + item.date + "</p>" +
-                            "<p>Description: " + item.description + "</p>";
+                            "<p>Description: " + item.description + "</p>" + 
+                            `<iframe
+                                width="600"
+                                height="450"
+                                style="border:0"
+                                loading="lazy"
+                                allowfullscreen
+                                referrerpolicy="no-referrer-when-downgrade"
+                                src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCHJTgseMnVwDvJyvKCQXjPlUCvPhDS8X0&q=${encodeURI(address)}">
+                            </iframe>`;
                 }).join("");
             }
         });
