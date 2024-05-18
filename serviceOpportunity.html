@@ -9,6 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Radio+Canada+Big:ital,wght@0,400..700;1,400..700&family=Six+Caps&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <style>
+        /* Add your custom styles for input elements here */
         input[type="text"],
         input[type="date"] {
             width: 100%;
@@ -20,7 +21,7 @@
             color: white;
             outline: none;
             transition: background-color 0.3s ease;
-            font-family: 'Radio Canada Big', sans-serif; 
+            font-family: 'Radio Canada Big', sans-serif; /* Change font family */
         }
 
         input[type="text"]:focus,
@@ -36,7 +37,7 @@
             font-family: 'Six Caps', sans-serif;
             color: white;
             cursor: pointer;
-            padding: 15px 30px; 
+            padding: 15px 30px; /* Adjust padding for larger button */
             border: 2px solid transparent;
             border-radius: 5px;
             background: none;
@@ -44,7 +45,7 @@
             transition: all 0.3s ease;
             position: relative;
             z-index: 1;
-            font-size: 1.2em;
+            font-size: 1.2em; /* Increase font size */
         }
 
         .custom-submit:hover {
@@ -86,49 +87,58 @@
                 opacity: 1;
             }
         }
+
+        /* Center the description text */
         p {
             text-align: center;
         }
     </style>
 </head>
 <body>
-<div class="navigation">
-    <a href="login.html">LOG OUT</a>
-    <a href="home.html">HOME</a>
-    <a href="search.html">SEARCH</a>
-    <a href="profile.html">PROFILE</a>
-</div>
-<h1>Request Volunteers</h1>
-<p>If you are a non-profit organization looking for volunteers, enter your details here! Aspiring volunteers may find your request and participate in your activities.</p>
-<form id="serviceOpportunity">
-    <input type="text" id="username" name="requestName" placeholder="Name (e.g. Tree of Knowledge)">
-    <input type="text" id="address" name="address" placeholder="Address (e.g. Foosha Village, Dawn Island, Goa Kingdom)">
-    <input type="text" id="time" name="time" placeholder="Hours (e.g. 1 hr between 5PM - 8PM)">
-    <input type="date" id="date" name="date">
-    <input type="text" id="description" name="description" placeholder="Short Description (What they will do, how they will do it, materials to bring, etc.)">
-    <div class="submit-container">
-        <button onclick="finishServiceOpportunity(event)" type="submit" class="custom-submit">Submit</button>
+    <div class="navigation">
+        <a href="login.html">LOG OUT</a>
+        <a href="home.html">HOME</a>
+        <a href="search.html">SEARCH</a>
+        <a href="profile.html">PROFILE</a>
     </div>
-</form>
-<script>
-function finishServiceOpportunity(event) {
-  event.preventDefault();
-  var data = {
-    name: document.getElementById("username").value,
-    address: document.getElementById("address").value,
-    time: document.getElementById("time").value,
-    date: document.getElementById("date").value,
-    description: document.getElementById("description").value
-  };
+    <h1>Request Volunteers</h1>
+    <p>If you are a non-profit organization looking for volunteers, enter your details here! Aspiring volunteers may find your request and participate in your activities.</p>
+    <form id="serviceOpportunity">
+        <input type="text" id="username" name="requestName" placeholder="Name (e.g. Tree of Knowledge)">
+        <input type="text" id="address" name="address" placeholder="Address (e.g. Foosha Village, Dawn Island, Goa Kingdom)">
+        <input type="text" id="time" name="time" placeholder="(e.g. 1 hr between 5PM - 8PM)">
+        <input type="date" id="date" name="date">
+        <input type="text" id="description" name="description" placeholder="Short Description (What they will do, how they will do it, materials to bring, etc.)">
+        <div class="submit-container">
+            <button onclick="finishServiceOpportunity(event)" type="submit" class="custom-submit">Submit</button>
+        </div>
+    </form>
+    <script>
+        function finishServiceOpportunity
+        (event) {
+            event.preventDefault();
+            var name = document.getElementById("username").value;
+            var address = document.getElementById("address").value;
+            var time = document.getElementById("time").value;
+            var date = document.getElementById("date").value;
+            var description = document.getElementById("description").value;
 
-  var existingData = JSON.parse(localStorage.getItem("serviceData")) || [];
+            var existingServiceData = JSON.parse(localStorage.getItem("serviceData")) || [];
 
-  existingData.push(data);
+            var newServiceOpportunity = {
+                name: name,
+                address: address,
+                time: time,
+                date: date,
+                description: description
+            };
 
-  localStorage.setItem("serviceData", JSON.stringify(existingData));
-    
-  window.location.href = "search.html";
-}
-</script>
+            existingServiceData.push(newServiceOpportunity);
+
+            localStorage.setItem("serviceData", JSON.stringify(existingServiceData));
+
+            window.location.href = "search.html";
+        }
+    </script>
 </body>
 </html>
