@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Volunet - Search</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -17,13 +17,23 @@
         <a href="profile.html">PROFILE</a>
     </div>
 
-  <button onclick="createServiceOpportunity()">Request Volunteers</button>
+    <button onclick="createServiceOpportunity()">Request Volunteers</button>
 
-  <script>
-    function createServiceOpportunity() {
-        window.location.href = "serviceOpportunity.html";
-    }
-  </script>
+    <script>
+        function createServiceOpportunity() {
+            window.location.href = "serviceOpportunity.html";
+        }
+
+        var username = localStorage.getItem("username");
+
+        document.addEventListener("DOMContentLoaded", function() {
+            if (username) {
+                var welcomeText = document.createElement("span");
+                welcomeText.textContent = "Welcome, " + username;
+                document.querySelector(".navigation").appendChild(welcomeText);
+            }
+        });
+    </script>
 
 </body>
 </html>
