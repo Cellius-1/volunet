@@ -42,16 +42,16 @@
             }
         });
         document.addEventListener("DOMContentLoaded", function() {
-            var name = localStorage.getItem("name");
-            var address = localStorage.getItem("address");
-            var time = localStorage.getItem("time");
-            var description = localStorage.getItem("description");
-
+            var data = JSON.parse(localStorage.getItem("serviceData")) || [];
             var detailsDiv = document.getElementById("details");
-            detailsDiv.innerHTML = "<p>Name: " + name + "</p>" +
-                                    "<p>Address: " + address + "</p>" +
-                                    "<p>Time: " + time + "</p>" +
-                                    "<p>Description: " + description + "</p>";
+            if (data.length > 0) {
+                detailsDiv.innerHTML = data.map(function(item) {
+                    return "<p>Name: " + item.name + "</p>" +
+                            "<p>Address: " + item.address + "</p>" +
+                            "<p>Time: " + item.time + "</p>" +
+                            "<p>Description: " + item.description + "</p>";
+                }).join("");
+            }
         });
     </script>
 </body>
