@@ -98,30 +98,6 @@ p, .content {
     background-color: #111;
 }
 
-.centered-text {
-    max-width: 800px;
-    padding: 20px;
-}
-
-.centered-text .small-text {
-    font-family: 'Courier New', Courier, monospace;
-    font-size: 1.5em;
-    text-align: left;
-}
-
-.centered-text .large-text {
-    font-size: 3em;
-    margin: 20px 0;
-}
-
-.centered-text .medium-text {
-    font-size: 1.5em;
-}
-
-.centered-text .highlight {
-    color: #FFD700;
-}
-
 .footer {
     background-color: #333;
     color: white;
@@ -151,7 +127,7 @@ p, .content {
 }
 
 .logo img {
-    max-width: 150px;
+    max-width: 50px; /* Adjust this value to make the logo smaller */
     height: auto;
 }
 
