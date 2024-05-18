@@ -17,6 +17,7 @@
                 x.innerHTML = "Geolocation is not supported by this browser.";
             }
         }
+
         function showPosition(position) {
             const x = document.getElementById("demo");
             x.innerHTML = "VoluNet requires location data to locate opportunities near you.";
@@ -24,33 +25,42 @@
     </script>
 </head>
 <body onload="getLocation()">
-    <h1>VoluNet</h1>
-    <div class="navigation">
-        <a href="login.html">LOGIN</a>
-        <a href="home.html">HOME</a>
-        <a href="search.html">SEARCH</a>
-        <a href="profile.html">PROFILE</a>
+    <div class="header">
+        <h1>VoluNet</h1>
+    </div>
+    <div class="navbar-container">
+        <div class="navigation">
+            <a href="login.html">LOGIN</a>
+            <a href="home.html">HOME</a>
+            <a href="main.html">SEARCH</a>
+            <a href="profile.html">PROFILE</a>
+        </div>
+        <div class="welcome-text-container">
+            <span id="welcomeText" class="welcome-text"></span>
+        </div>
     </div>
     <h2>About</h2>
-    <p>VoluNet is a platform which aimes to make volunteering and community service easily accessible for those who may require it. Through VoluNet, aspiring volunteers can search for opportunities near them. Recruiting companies and services can post applications, with registration easily accessible. Users have a profile, which can keep track of all the service they have completed, and signal to companies their level of proficiency.</p>
+    <p>VoluNet is a platform which aims to make volunteering and community service easily accessible for those who may require it. Through VoluNet, aspiring volunteers can search for opportunities near them. Recruiting companies and services can post applications, with registration easily accessible. Users have a profile, which can keep track of all the service they have completed, and signal to companies their level of proficiency.</p>
     <div id="demo"></div>
-    </div>
     <div class="login-container">
         <form id="startButton">
             <input type="submit" value="Start">
         </form>
         <script>
-        document.getElementById("startButton").addEventListener("submit", function(event) {
-            event.preventDefault();
-            window.location.href = "search.html";
-        });
-        var username = localStorage.getItem("username");
+            document.getElementById("startButton").addEventListener("submit", function(event) {
+                event.preventDefault();
+                window.location.href = "main.html";
+            });
 
-        document.addEventListener("DOMContentLoaded", function() {
-            var welcomeText = document.createElement("span");
-            welcomeText.textContent = "Welcome, " + username;
-            document.querySelector(".navigation").appendChild(welcomeText);
-    </script>
+            var username = localStorage.getItem("username");
+
+            document.addEventListener("DOMContentLoaded", function() {
+                if (username) {
+                    var welcomeText = document.getElementById("welcomeText");
+                    welcomeText.textContent = "Welcome, " + username;
+                }
+            });
+        </script>
     </div>
     <div class="footer">
         <p>&copy; 2024 Tharun Naguleswaran, Samir Rangwalla, and Shubham Roy-Choudhury. Created using HTML, CSS, GCP and Node.js. All rights reserved.</p>
