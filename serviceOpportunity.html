@@ -111,22 +111,23 @@
     </div>
 </form>
 <script>
-    function finishServiceOpportunity(event) {
-        event.preventDefault();
-        var name = document.getElementById("username").value;
-        var address = document.getElementById("address").value;
-        var time = document.getElementById("time").value;
-        var date = document.getElementById("date").value;
-        var description = document.getElementById("description").value;
+function finishServiceOpportunity(event) {
+  event.preventDefault();
+  var data = {
+    name: document.getElementById("username").value,
+    address: document.getElementById("address").value,
+    time: document.getElementById("time").value,
+    description: document.getElementById("description").value
+  };
 
-        localStorage.setItem("name", name);
-        localStorage.setItem("address", address);
-        localStorage.setItem("time", time);
-        localStorage.setItem("date", date);
-        localStorage.setItem("description", description);
+  var existingData = JSON.parse(localStorage.getItem("serviceData")) || [];
 
-        window.location.href = "search.html";
-    }
+  existingData.push(data);
+
+  localStorage.setItem("serviceData", JSON.stringify(existingData));
+    
+  window.location.href = "search.html";
+}
 </script>
 </body>
 </html>
