@@ -33,6 +33,11 @@
       var time = document.getElementById("time").value;
       var description = document.getElementById("description").value;
 
+      localStorage.setItem("name", name);
+      localStorage.setItem("address", address);
+      localStorage.setItem("time", time);
+      localStorage.setItem("description", description);
+
       window.location.href = "search.html";
         }
   </script>
