@@ -45,6 +45,7 @@
             var data = JSON.parse(localStorage.getItem("serviceData")) || [];
             var detailsDiv = document.getElementById("details");
             if (data.length > 0) {
+                data.reverse();
                 detailsDiv.innerHTML = data.map(function(item) {
                     return "<p>Name: " + item.name + "</p>" +
                             "<p>Address: " + item.address + "</p>" +
