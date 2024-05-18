@@ -43,6 +43,18 @@
                 welcomeText.textContent = "Welcome, " + username;
             }
         });
+        document.addEventListener("DOMContentLoaded", function() {
+            var name = localStorage.getItem("name");
+            var address = localStorage.getItem("address");
+            var time = localStorage.getItem("time");
+            var description = localStorage.getItem("description");
+
+            var detailsDiv = document.getElementById("details");
+            detailsDiv.innerHTML = "<p>Name: " + name + "</p>" +
+                                    "<p>Address: " + address + "</p>" +
+                                    "<p>Time: " + time + "</p>" +
+                                    "<p>Description: " + description + "</p>";
+        });
     </script>
 </body>
 </html>
