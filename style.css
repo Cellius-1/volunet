@@ -441,3 +441,34 @@ p, .content {
     margin: 10px;
     width: 300px; /* Adjust box width as needed */
 }
+
+.search-box input[type="text"] {
+    padding: 10px;
+    margin-right: 10px;
+    border: none;
+    border-radius: 20px;
+    font-family: 'Radio Canada Big', sans-serif;
+    transition: all 0.3s ease;
+    outline: none;
+    width: 200px;
+}
+
+.search-box button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 20px;
+    font-family: 'Radio Canada Big', sans-serif;
+    background-color: transparent;
+    color: white;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    outline: none;
+}
+
+.search-box button:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.total-hours {
+    color: white;
+}
