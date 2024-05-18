@@ -49,14 +49,21 @@ p, .content {
     margin: 0 auto;
 }
 
-.navigation {
-    margin: 0; /* Reset margin */
-    padding: 0; /* Reset padding */
+.navbar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
     background-color: #000;
+    padding: 10px 20px;
+    box-sizing: border-box; /* Ensure padding is included in element's total width/height */
+}
+
+.navigation {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100%;
+    flex-grow: 1;
 }
 
 .navigation a {
@@ -86,6 +93,18 @@ p, .content {
     transform: scaleX(1);
     top: 90%;
 }
+
+.welcome-text-container {
+    flex-shrink: 0;
+}
+
+.welcome-text {
+    font-family: 'Six Caps', sans-serif;
+    color: white;
+    text-align: right;
+    padding-right: 20px;
+}
+
 .section {
     flex: 1;
     display: flex;
@@ -180,7 +199,6 @@ p, .content {
     transform: scaleX(1);
 }
 
-
 .login-container input {
     width: 100%;
     padding: 10px;
@@ -193,7 +211,6 @@ p, .content {
 .login-container input[type="password"] {
     background: rgba(255, 255, 255, 0.2);
     color: white;
-    
 }
 
 .login-container input[type="submit"] {
@@ -231,6 +248,7 @@ p, .content {
 .login-container .custom-submit:hover::after {
     width: 100%; \
 }
+
 @keyframes fadeIn {
     0% {
         opacity: 0;
