@@ -7,7 +7,125 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Radio+Canada+Big:ital,wght@0,400..700;1,400..700&family=Six+Caps&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: 'Radio Canada Big', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #000000;
+            color: white;
+        }
+
+        .login-container {
+            background: rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            max-width: 400px;
+            width: 100%;
+            margin: 0 auto; 
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .welcome-text {
+            color: white;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .search-box {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .search-box input[type="text"],
+        .search-box input[type="date"] {
+            padding: 10px;
+            margin-right: 10px;
+            border: none;
+            border-radius: 20px;
+            font-family: 'Radio Canada Big', sans-serif;
+            transition: all 0.3s ease;
+            outline: none;
+            width: 200px;
+            background-color: rgba(255, 255, 255, 0.2);
+            color: white;
+        }
+
+        .search-box input[type="text"]::placeholder,
+        .search-box input[type="date"]::placeholder {
+            color: white;
+        }
+
+        .search-box button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 20px;
+            font-family: 'Radio Canada Big', sans-serif;
+            background-color: transparent;
+            color: white;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            outline: none;
+        }
+
+        .search-box button:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .total-hours {
+            color: white;
+            font-size: 2em; /* Make the total hours section bigger */
+        }
+
+        .progress-bar {
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            margin-top: 20px;
+            overflow: hidden;
+        }
+
+        .progress-bar-fill {
+            height: 20px;
+            background-color: #4CAF50;
+            width: 0%;
+            transition: width 2s; /* Smooth animation for the progress bar */
+            text-align: right;
+            line-height: 20px;
+            font-size: 14px;
+        }
+
+        .diary {
+            margin-top: 30px;
+            width: 100%;
+            text-align: left;
+        }
+
+        .diary-entry {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 10px 20px;
+            margin-bottom: 10px;
+            overflow: hidden;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
 </head>
 <body>
     <div class="login-container homepage">
@@ -18,32 +136,93 @@
                 <button onclick="submitHours()">Submit</button>
             </div>
             <div class="total-hours">
-                <p>Total volunteer hours: <span id="totalHours">0</span></p>
+                Total volunteer hours: <span id="totalHours" style="font-family: 'Six Caps', sans-serif;">0</span>
+            </div>
+            <div class="progress-bar">
+                <div class="progress-bar-fill" id="progressBarFill"></div>
+            </div>
+            <div class="diary">
+                <h2>Diary Entries</h2>
+                <div id="diaryEntries"></div>
+            </div>
+            <div class="diary-input">
+                <input type="text" id="locationName" placeholder="Location Name" style="padding: 10px; margin-bottom: 10px; border: none; border-radius: 20px; font-family: 'Radio Canada Big', sans-serif; transition: all 0.3s ease; outline: none; width: 200px; background-color: rgba(255, 255, 255, 0.2); color: white;">
+                <input type="date" id="volunteerDate" style="padding: 10px; margin-bottom: 10px; border: none; border-radius: 20px; font-family: 'Radio Canada Big', sans-serif; transition: all 0.3s ease; outline: none; width: 200px; background-color: rgba(255, 255, 255, 0.2); color: white;">
+                <button onclick="addDiaryEntry()" style="padding: 10px 20px; border: none; border-radius: 20px; font-family: 'Radio Canada Big', sans-serif; background-color: transparent; color: white; transition: all 0.3s ease; cursor: pointer; outline: none;">Add Entry</button>
             </div>
         </div>
     </div>
 
     <script>
         var username = localStorage.getItem("username");
+        var totalVolunteerHours = 0; // Variable to store cumulative hours
 
         document.addEventListener("DOMContentLoaded", function() {
             if (username) {
                 var welcomeText = document.getElementById("welcomeText");
                 welcomeText.innerHTML = "<h1>Welcome, " + username.toUpperCase() + "</h1>";
             }
+            
+            animateProgressBar();
         });
 
         function submitHours() {
-            var hoursInput = document.getElementById("volunteerHours").value;
-            var totalHours = document.getElementById("totalHours");
+            var hoursInput = parseInt(document.getElementById("volunteerHours").value);
+            var totalHoursElement = document.getElementById("totalHours");
+            var progressBarFill = document.getElementById("progressBarFill");
+            var targetHours = 100; // Target volunteer hours
 
-            if (!isNaN(hoursInput) && hoursInput.trim() !== "") {
-                totalHours.textContent = hoursInput;
+            if (!isNaN(hoursInput) && hoursInput > 0) {
+                totalVolunteerHours += hoursInput; // Add entered hours to cumulative total
+                if (totalVolunteerHours > targetHours) {
+                    totalVolunteerHours = hoursInput; // Reset total if it exceeds target
+                }
+                totalHoursElement.textContent = totalVolunteerHours;
+                var percentComplete = (totalVolunteerHours / targetHours) * 100;
+                progressBarFill.style.width = percentComplete + "%";
+                progressBarFill.textContent = percentComplete.toFixed(2) + "%";
             } else {
-                totalHours.textContent = "Error: Please enter a valid number";
-                totalHours.style.color = "red";
+                totalHoursElement.textContent = "Error: Please enter a valid number";
+                totalHoursElement.style.color = "red";
+            }
+        }
+
+        function animateProgressBar() {
+            var progressBarFill = document.getElementById("progressBarFill");
+            var targetHours = 100; // Target volunteer hours
+            var percentComplete = (totalVolunteerHours / targetHours) * 100;
+            progressBarFill.style.width = percentComplete + "%";
+            progressBarFill.textContent = percentComplete.toFixed(2) + "%";
+        }
+
+        function addDiaryEntry() {
+            var locationName = document.getElementById("locationName").value;
+            var volunteerDate = document.getElementById("volunteerDate").value;
+            var diaryEntries = document.getElementById("diaryEntries");
+
+            if (locationName.trim() !== "" && volunteerDate.trim() !== "") {
+                // Create a new diary entry div
+                var entryDiv = document.createElement("div");
+                entryDiv.classList.add("diary-entry");
+
+                // Construct the entry content
+                var entryContent = "<p><strong>Location:</strong> " + locationName + "</p>";
+                entryContent += "<p><strong>Date:</strong> " + volunteerDate + "</p>";
+
+                // Set the entry content
+                entryDiv.innerHTML = entryContent;
+
+                // Append the entry to the diary entries container
+                diaryEntries.appendChild(entryDiv);
+
+                // Clear input fields after adding entry
+                document.getElementById("locationName").value = "";
+                document.getElementById("volunteerDate").value = "";
+            } else {
+                alert("Please enter location name and date.");
             }
         }
     </script>
 </body>
 </html>
+
