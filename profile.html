@@ -10,32 +10,40 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="header">
-        <h1>Search</h1>
-    </div>
-    <div class="navbar-container">
-        <div class="navigation">
-            <a href="login.html">LOG OUT</a>
-            <a href="home.html">HOME</a>
-            <a href="search.html" class="active">SEARCH</a>
-            <a href="profile.html">PROFILE</a>
-        </div>
-        <div class="welcome-text-container">
-            <span id="welcomeText" class="welcome-text"></span>
-        </div>
-    </div>
     <div class="login-container homepage">
-    <div id="details"></div>
-    <script>
+        <div id="details">
+            <div id="welcomeText" class="welcome-text"></div>
+            <div class="search-box">
+                <input type="text" id="volunteerHours" placeholder="Insert volunteer hours">
+                <button onclick="submitHours()">Submit</button>
+            </div>
+            <div class="total-hours">
+                <p>Total volunteer hours: <span id="totalHours">0</span></p>
+            </div>
+        </div>
+    </div>
 
+    <script>
         var username = localStorage.getItem("username");
 
         document.addEventListener("DOMContentLoaded", function() {
             if (username) {
                 var welcomeText = document.getElementById("welcomeText");
-                welcomeText.textContent = "Welcome, " + username;
+                welcomeText.innerHTML = "<h1>Welcome, " + username.toUpperCase() + "</h1>";
             }
         });
+
+        function submitHours() {
+            var hoursInput = document.getElementById("volunteerHours").value;
+            var totalHours = document.getElementById("totalHours");
+
+            if (!isNaN(hoursInput) && hoursInput.trim() !== "") {
+                totalHours.textContent = hoursInput;
+            } else {
+                totalHours.textContent = "Error: Please enter a valid number";
+                totalHours.style.color = "red";
+            }
+        }
     </script>
 </body>
 </html>
