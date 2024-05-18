@@ -34,6 +34,16 @@
                 welcomeText.textContent = "Here are opportunities near you, " + username;
             }
         });
+
+    var name = localStorage.getItem("name");
+    var address = localStorage.getItem("address");
+    var time = localStorage.getItem("time");
+    var description = localStorage.getItem("description");
+    
+    console.log("Name: " + name);
+    console.log("Address: " + address);
+    console.log("Time: " + time);
+    console.log("Description: " + description);
   </script>
 </body>
 </html>
