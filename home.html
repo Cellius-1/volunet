@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Volunet - Home</title>
+    <title>VoluNet - Home</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Radio+Canada+Big:ital,wght@0,400..700;1,400..700&family=Six+Caps&display=swap" rel="stylesheet">
@@ -22,19 +22,33 @@
             const x = document.getElementById("demo");
             x.innerHTML = "VoluNet requires location data to locate opportunities near you.";
         }
+
+        document.addEventListener("DOMContentLoaded", function() {
+            var username = localStorage.getItem("username");
+            if (username) {
+                var welcomeText = document.getElementById("welcomeText");
+                welcomeText.textContent = "Welcome, " + username;
+            }
+        });
+        
+        function startButton(event) {
+            event.preventDefault();
+            window.location.href = "search.html";
+        }
     </script>
 </head>
 <body onload="getLocation()">
     <div class="header">
-        <h1>VoluNet</h1>
+        <img src="volunetlogosquare.png" alt="VoluNet Logo">
     </div>
     <div class="navbar-container">
         <div class="navigation">
-            <a href="login.html">LOG OUT</a>
             <a href="home.html">HOME</a>
             <a href="search.html">SEARCH</a>
             <a href="profile.html">PROFILE</a>
+            <a href="login.html">LOG OUT</a>
         </div>
+        
         <div class="welcome-text-container">
             <span id="welcomeText" class="welcome-text"></span>
         </div>
@@ -42,26 +56,21 @@
     <div class="section">
         <h2>About</h2>
     </div>
-    <p>VoluNet is a platform which aims to make volunteering and community service easily accessible for those who may require it. Through VoluNet, aspiring volunteers can search for opportunities near them. Recruiting companies and services can post applications, with registration easily accessible. Users have a profile, which can keep track of all the service they have completed, and signal to companies their level of proficiency.</p>
-    <div id="demo"></div>
-    <div class="login-container">
-    <button onclick="startButton(event)"type="button" class="custom-submit">Begin</button>
-        <script>
-            function startButton(event) {
-              event.preventDefault();
-              window.location.href = "search.html";
-        }
-
-            var username = localStorage.getItem("username");
-
-            document.addEventListener("DOMContentLoaded", function() {
-                if (username) {
-                    var welcomeText = document.getElementById("welcomeText");
-                    welcomeText.textContent = "Welcome, " + username;
-                }
-            });
-        </script>
+    <div class="login-container homepage"> <!-- Added 'homepage' class -->
+        <button onclick="startButton(event)" type="button" class="custom-submit">Begin</button>
     </div>
+    <div class="description">
+        <div class="description-text">
+            <p>VoluNet is a platform which aims to make volunteering and community service easily accessible for those who may require it. Through VoluNet, aspiring volunteers can search for opportunities near them. Recruiting companies and services can post applications, with registration easily accessible. Users have a profile, which can keep track of all the service they have completed, and signal to companies their level of proficiency.</p>
+        </div>
+        <div class="description-image">
+            <img src="https://fjwp.s3.amazonaws.com/blog/wp-content/uploads/2020/10/15153848/The-Career-Benefits-of-Volunteering-During-Your-Job-Search-2.jpg" alt="Description Image">
+        </div>
+    </div>
+    <div id="demo"></div>
+
+
+
     <div class="footer">
         <p>&copy; 2024 Tharun Naguleswaran, Samir Rangwalla, and Shubham Roy-Choudhury. Created using HTML, CSS, GCP and Node.js. All rights reserved.</p>
     </div>
