@@ -4,11 +4,6 @@ body {
     padding: 0;
     background: #000000;
     color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    flex-direction: column;
 }
 
 h1, h2, h3, .header, .navigation a { 
@@ -55,19 +50,22 @@ p, .content {
 }
 
 .navigation {
-    overflow: hidden;
+    margin: 0; /* Reset margin */
+    padding: 0; /* Reset padding */
     background-color: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
 }
 
 .navigation a {
-    float: left;
     color: white;
     text-align: center;
     padding: 14px 20px;
     text-decoration: none;
     font-size: 17px;
     position: relative;
-    overflow: hidden;
 }
 
 .navigation a::after {
@@ -88,7 +86,6 @@ p, .content {
     transform: scaleX(1);
     top: 90%;
 }
-
 .section {
     flex: 1;
     display: flex;
@@ -99,13 +96,14 @@ p, .content {
 }
 
 .footer {
-    background-color: #333;
+    background-color: #111;
     color: white;
     text-align: center;
-    padding: 10px;
+    padding: 5px; 
     position: fixed;
     bottom: 0;
     width: 100%;
+    font-size: 14px; 
 }
 
 @keyframes slideIn {
@@ -127,7 +125,7 @@ p, .content {
 }
 
 .logo img {
-    max-width: 50px; /* Adjust this value to make the logo smaller */
+    max-width: 50px; 
     height: auto;
 }
 
@@ -139,6 +137,10 @@ p, .content {
     text-align: center;
     max-width: 400px;
     width: 100%;
+    margin: 0 auto; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .login-container h2 {
@@ -146,6 +148,38 @@ p, .content {
     font-size: 2em;
     margin-bottom: 20px;
 }
+
+.login-text {
+    font-family: 'Six Caps', sans-serif;
+    color: white;
+    cursor: pointer;
+    position: relative;
+    padding: 10px 20px;
+    border: 2px solid transparent;
+    transition: border-color 0.3s ease;
+}
+
+.login-text:hover {
+    border-color: white;
+}
+
+.login-text::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background-color: white;
+    bottom: -4px;
+    left: 0;
+    transition: width 0.3s ease;
+    transform: scaleX(0);
+}
+
+.login-text:hover::after {
+    width: 100%;
+    transform: scaleX(1);
+}
+
 
 .login-container input {
     width: 100%;
@@ -155,21 +189,23 @@ p, .content {
     border-radius: 5px;
 }
 
-.login-container input[type="text"], .login-container input[type="password"] {
+.login-container input[type="text"],
+.login-container input[type="password"] {
     background: rgba(255, 255, 255, 0.2);
     color: white;
+    
 }
 
 .login-container input[type="submit"] {
-    background: #FFD700;
+    background: white;
     color: black;
     cursor: pointer;
+    margin: 0 auto;
 }
 
 .login-container input[type="submit"]:hover {
-    background: #FFC700;
+    background: black;
 }
-
 @keyframes fadeIn {
     0% {
         opacity: 0;
