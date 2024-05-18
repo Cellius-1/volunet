@@ -1,38 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Login - Volunet</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Radio+Canada+Big:ital,wght@0,400..700;1,400..700&family=Six+Caps&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
-  <script>
-    const x = document.getElementById("demo");
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Volunet</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Radio+Canada+Big:ital,wght@0,400..700;1,400..700&family=Six+Caps&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script>
+        function getLocation() {
+            const x = document.getElementById("demo");
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showPosition);
+            } else {
+                x.innerHTML = "Geolocation is not supported by this browser.";
+            }
+        }
 
-function getLocation() {
-  if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(showPosition);
-  } else {
-    x.innerHTML = "Geolocation is not supported by this browser.";
-  }
-}
-
-function showPosition(position) {
-  x.innerHTML = "Latitude: " + position.coords.latitude +
-  "<br>Longitude: " + position.coords.longitude;
-}
-  </script>
+        function showPosition(position) {
+            const x = document.getElementById("demo");
+            x.innerHTML = "Latitude: " + position.coords.latitude +
+                "<br>Longitude: " + position.coords.longitude;
+        }
+    </script>
 </head>
-<body>
-  <div class="navigation">
+<body onload="getLocation()">
+    <div class="navigation">
         <a href="login.html">LOGIN</a>
         <a href="home.html">HOME</a>
         <a href="main.html">SEARCH</a>
         <a href="profile.html">PROFILE</a>
     </div>
-  <div class="footer">
+    <div id="demo"></div>
+    <div class="footer">
         <p>&copy; 2024 Tharun Naguleswaran, Samir Rangwalla, and Shubham Roy-Choudhury. Created using HTML, CSS, GCP and Node.js. All rights reserved.</p>
-  </div>
+    </div>
 </body>
 </html>
