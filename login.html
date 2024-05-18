@@ -27,6 +27,12 @@
             <input type="password" name="password" placeholder="Password">
             <input type="submit" value="Login">
         </form>
+        <script>
+        document.getElementById("loginForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            window.location.href = "redirect-page.html";
+        });
+    </script>
     </div>
     <div class="footer">
         <p>&copy; 2024 Tharun Naguleswaran, Samir Rangwalla, and Shubham Roy-Choudhury. Created using HTML, CSS, GCP and Node.js. All rights reserved.</p>
