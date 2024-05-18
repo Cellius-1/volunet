@@ -10,11 +10,19 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="navigation">
-        <a href="login.html">LOGIN</a>
-        <a href="home.html">HOME</a>
-        <a href="search.html">SEARCH</a>
-        <a href="profile.html">PROFILE</a>
+    <div class="header">
+        <h1>Search</h1>
+    </div>
+    <div class="navbar-container">
+        <div class="navigation">
+            <a href="login.html">LOGIN</a>
+            <a href="home.html">HOME</a>
+            <a href="search.html">SEARCH</a>
+            <a href="profile.html">PROFILE</a>
+        </div>
+        <div class="welcome-text-container">
+            <span id="welcomeText" class="welcome-text"></span>
+        </div>
     </div>
 
     <button onclick="createServiceOpportunity()">Request Volunteers</button>
@@ -28,12 +36,10 @@
 
         document.addEventListener("DOMContentLoaded", function() {
             if (username) {
-                var welcomeText = document.createElement("span");
+                var welcomeText = document.getElementById("welcomeText");
                 welcomeText.textContent = "Welcome, " + username;
-                document.querySelector(".navigation").appendChild(welcomeText);
             }
         });
     </script>
-
 </body>
 </html>
