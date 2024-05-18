@@ -197,14 +197,40 @@ p, .content {
 }
 
 .login-container input[type="submit"] {
-    background: white;
-    color: black;
-    cursor: pointer;
-    margin: 0 auto;
+    display: none; /* Hide the existing submit button */
 }
 
-.login-container input[type="submit"]:hover {
-    background: black;
+.login-container .custom-submit {
+    font-family: 'Six Caps', sans-serif; /* Use Six Caps font */
+    color: white;
+    cursor: pointer;
+    padding: 10px 20px;
+    border: 2px solid transparent;
+    transition: border-color 0.3s ease;
+    background: none; 
+    outline: none; 
+
+.login-container .custom-submit:hover {
+    border-color: white;
+}
+
+.login-container .custom-submit::after {
+    content: '';
+    position: absolute;
+    width: calc(100% + 20px);
+    height: calc(100% + 20px);
+    background-color: white;
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.login-container .custom-submit:hover::after {
+    opacity: 1;
 }
 @keyframes fadeIn {
     0% {
