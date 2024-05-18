@@ -45,7 +45,16 @@
     document.getElementById("searchResults").innerHTML += "<h2>Address: " + address + "</h2>";
     document.getElementById("searchResults").innerHTML += "<h2>Time: " + time + "</h2>";
     document.getElementById("searchResults").innerHTML += "<h3>Description: " + description + "</h3>";
-    document.getElementById("searchResults").innerHTML += `<img src="https://maps.googleapis.com/maps/api/staticmap?center=${encodeURI(address)}&markers=${encodeURI(address)}&zoom=12&size=400x400&key=AIzaSyCHJTgseMnVwDvJyvKCQXjPlUCvPhDS8X0">`
-  </script>
+    document.getElementById("searchResults").innerHTML += `
+        <iframe
+            width="600"
+            height="450"
+            style="border:0"
+            loading="lazy"
+            allowfullscreen
+            referrerpolicy="no-referrer-when-downgrade"
+            src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCHJTgseMnVwDvJyvKCQXjPlUCvPhDS8X0&q=${encodeURI(address)}">
+        </iframe>`
+    </script>
 </body>
 </html>
