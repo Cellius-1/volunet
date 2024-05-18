@@ -26,14 +26,21 @@
         </div>
     </div>
 
-    <button onclick="createServiceOpportunity()">Request Volunteers</button>
+    <button onclick="createServiceOpportunity(event)">Request Volunteers</button>
     <form id="searchService">
         <input type="text" id="searchParameters" name="search" placeholder="Search Services. . .">
+        <button onclick="searchService(event)"type="submit">Search</button>
     </form>
     <script>
-        function createServiceOpportunity() {
+        function createServiceOpportunity(event) {
+            event.preventDefault();
             window.location.href = "serviceOpportunity.html";
         }
+        function searchService(event) {
+            event.preventDefault();
+            var searchParameters = document.getElementById("searchParameters").value;
+            window.location.href = "searchResult.html";
+            
 
         var username = localStorage.getItem("username");
 
