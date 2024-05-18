@@ -17,30 +17,31 @@
         <div class="navigation">
             <a href="login.html">LOG OUT</a>
             <a href="home.html">HOME</a>
-            <a href="search.html">SEARCH</a>
+            <a href="search.html" class="active">SEARCH</a>
             <a href="profile.html">PROFILE</a>
-            
         </div>
         <div class="welcome-text-container">
             <span id="welcomeText" class="welcome-text"></span>
         </div>
     </div>
-
-    <button onclick="createServiceOpportunity(event)">Request Volunteers</button>
-    <form id="searchService">
-        <input type="text" id="searchParameters" name="search" placeholder="Search Services. . .">
-        <button onclick="searchService(event)"type="submit">Search</button>
+    <div class="login-container homepage">
+    <button onclick="createServiceOpportunity(event)" class="custom-submit">Request Volunteers</button>
+    <form id="searchService" class="search-bar">
+        <input type="text" id="searchParameters" name="search" placeholder="Search Services...">
+        <button onclick="searchService(event)" type="submit" class="custom-button">Search</button>
     </form>
+
     <script>
         function createServiceOpportunity(event) {
             event.preventDefault();
             window.location.href = "serviceOpportunity.html";
         }
+
         function searchService(event) {
             event.preventDefault();
             var searchParameters = document.getElementById("searchParameters").value;
             window.location.href = "searchResult.html";
-                }
+        }
 
         var username = localStorage.getItem("username");
 
