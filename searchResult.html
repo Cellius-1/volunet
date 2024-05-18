@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Volunet - Search</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Radio+Canada+Big:ital,wght@0,400..700;1,400..700&family=Six+Caps&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="header">
+        <h1>Search</h1>
+    </div>
+    <div class="navbar-container">
+        <div class="navigation">
+            <a href="home.html">HOME</a>
+            <a href="search.html">SEARCH</a>
+            <a href="profile.html">PROFILE</a>
+            <a href="login.html">LOG OUT</a>
+            
+        </div>
+        <div class="welcome-text-container">
+            <span id="welcomeText" class="welcome-text"></span>
+        </div>
+
+  <script>
+    var username = localStorage.getItem("username");
+
+        document.addEventListener("DOMContentLoaded", function() {
+            if (username) {
+                var welcomeText = document.getElementById("welcomeText");
+                welcomeText.textContent = "Here are opportunities near you, " + username;
+            }
+        });
+  </script>
