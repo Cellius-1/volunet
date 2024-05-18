@@ -18,14 +18,14 @@
     </div>
 
     <div class="logo">
-        <img src="images/volunetlogosquare.png" alt="Volunet Logo">
+        <img src="volunetlogosquare.png" alt="Volunet Logo">
     </div>
     <div class="login-container">
         <h2>Login</h2>
         <form id="loginForm">
             <input type="text" name="username" placeholder="Username">
             <input type="password" name="password" placeholder="Password">
-            <input type="submit" value="Login">
+            <button type="submit" class="custom-submit">Login</button> <!-- Changed from input to button -->
         </form>
         <script>
         document.getElementById("loginForm").addEventListener("submit", function(event) {
