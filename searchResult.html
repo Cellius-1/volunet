@@ -25,6 +25,7 @@
         <div class="welcome-text-container">
             <span id="welcomeText" class="welcome-text"></span>
         </div>
+    <div id = search-Results></div>
   <script>
     var username = localStorage.getItem("username");
 
@@ -40,10 +41,10 @@
     var time = localStorage.getItem("time");
     var description = localStorage.getItem("description");
     
-    console.log("Name: " + name);
-    console.log("Address: " + address);
-    console.log("Time: " + time);
-    console.log("Description: " + description);
+    document.getElementById("custom-div").innerHTML = "<h1>("Name: " + name)</h1>";
+    document.getElementById("custom-div").innterHTML = "<h2>("Address: " + address)</h2>";
+    document.getElementById("custom-div").innterHTML = "<h2>("Time: " + time)</h2>";
+    document.getElementById("custom-div").innterHTML = "<h3>("Description: " + description)</h3>";
   </script>
 </body>
 </html>
