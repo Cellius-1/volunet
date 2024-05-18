@@ -205,15 +205,19 @@ p, .content {
 
 .login-container.homepage {
     background: none; 
-    padding: 20x 30px; 
+    padding: 20px 30px; 
     border-radius: 0; 
     box-shadow: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .login-container.homepage .custom-submit {
     background: none; 
     border: 2px solid white; 
     color: white; 
+    margin-bottom: 20px; 
 }
 
 .login-container.homepage .custom-submit:hover {
@@ -326,11 +330,11 @@ p, .content {
 
 .description-content {
     flex: 1;
-    margin-right: 20px; /* Adjust as needed */
+    margin-right: 20px; 
 }
 
 .description img {
-    max-width: 100%; /* Ensure the image doesn't exceed its container */
+    max-width: 100%;
     padding-right: 20px;
 }
 
@@ -351,7 +355,7 @@ p, .content {
 }
 
 .search-bar input[type="text"]:focus {
-    width: 300px; /* Adjust the width as needed */
+    width: 300px;
     background-color: rgba(255, 255, 255, 0.1);
 }
 
@@ -410,4 +414,30 @@ p, .content {
 
 .login-container .custom-submit:hover::after {
     width: 100%;
+}
+
+.event-row {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+}
+
+.events-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.login-container.homepage .events-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Center align events */
+}
+
+.event-box {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 5px;
+    padding: 20px;
+    margin: 10px;
+    width: 300px; /* Adjust box width as needed */
 }
