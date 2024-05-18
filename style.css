@@ -49,6 +49,21 @@ p, .content {
     margin: 0 auto;
 }
 
+.header h2 {
+    font-size: 3em; 
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    position: relative;
+    z-index: 1;
+    animation: slideIn 1s ease-in-out forwards; 
+    margin: 0 auto; 
+}
+
+.section h2 {
+    font-size: 2em; 
+}
+
+
 .navbar-container {
     display: flex;
     justify-content: space-between;
@@ -106,12 +121,29 @@ p, .content {
 }
 
 .section {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    position: relative; 
+    background: url('https://www.caringnetwork.com/wp-content/uploads/2023/01/10-Benefits-of-Volunteering-Your-Time-Regularly-2880w.webp') center/cover;
+    padding: 50px; 
     text-align: center;
-    background-color: #111;
+}
+
+.section::before {
+    content: ""; 
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.section h2 {
+    font-size: 3em; 
+    color: white;
+    position: relative; 
+    z-index: 1;
+    animation: slideIn 1.2s ease-in-out backwards; 
+    margin: 0 auto;
 }
 
 .footer {
