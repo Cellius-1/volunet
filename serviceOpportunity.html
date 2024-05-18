@@ -10,7 +10,20 @@
     <link rel="stylesheet" href="style.css">
   </head>
 <body>
-  <p>test</p>
+  <div class="navigation">
+        <a href="login.html">LOGIN</a>
+        <a href="home.html">HOME</a>
+        <a href="search.html">SEARCH</a>
+        <a href="profile.html">PROFILE</a>
+  </div>
+  <h1>Request Volunteers</h1>
+  <p>If you are a non-profit organization looking for volunteers, enter your details here! Aspiring volunteers may find your request and participate in your activities.</p>
+  <form id="serviceOpportunity">
+    <input type="text" id="username" name="requestName" placeholder="Name (e.g. Tree of Knowledge)">
+    <input type="text" id="address" name="address" placeholder="Address (e.g. Foosha Village, Dawn Island, Goa Kingdom">
+    <input type="text" id="time" name="time" placeholder="Hours of Operation (e.g. 9 A.M - 5 P.M EST)">
+    <input type="text" id="description" name="description" placeholder="Short Description (What they will do, how they will do it, materials to bring, etc.)">
+    <button type="submit" class="custom-submit">Submit</button>
 </body>
 
 </html>
