@@ -26,6 +26,13 @@ p, .content {
     align-items: center;
     text-align: center;
     position: relative;
+    max-width: 70%; /* Adjust the width as needed */
+    margin: 0 auto; /* Center align */
+}
+
+.header img {
+    max-width: 50px; 
+    height: auto;
 }
 
 .header::before {
@@ -56,7 +63,8 @@ p, .content {
     position: relative;
     z-index: 1;
     animation: slideIn 1s ease-in-out forwards; 
-    margin: 0 auto; 
+    margin: 0 auto;
+    max-width: 60%; 
 }
 
 .section h2 {
@@ -122,8 +130,8 @@ p, .content {
 
 .section {
     position: relative; 
-    background: url('https://www.caringnetwork.com/wp-content/uploads/2023/01/10-Benefits-of-Volunteering-Your-Time-Regularly-2880w.webp') center/cover;
-    padding: 50px; 
+    background: url('https://www.caringnetwork.com/wp-content/uploads/2023/01/10-Benefits-of-Volunteering-Your-Time-Regularly-2880w.webp') center/cover; /* Add your image URL */
+    padding: 50px;
     text-align: center;
 }
 
@@ -138,12 +146,12 @@ p, .content {
 }
 
 .section h2 {
-    font-size: 3em; 
+    font-size: 3em; /* Change the font size to make it larger */
     color: white;
-    position: relative; 
+    position: relative; /* Set position relative for z-index to work */
     z-index: 1;
-    animation: slideIn 1.2s ease-in-out backwards; 
-    margin: 0 auto;
+    animation: slideIn 1s ease-in-out forwards; /* Apply animation */
+    margin: 0 auto; /* Center align */
 }
 
 .footer {
@@ -193,6 +201,24 @@ p, .content {
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+.login-container.homepage {
+    background: none; 
+    padding: 20x 30px; 
+    border-radius: 0; 
+    box-shadow: none;
+}
+
+.login-container.homepage .custom-submit {
+    background: none; 
+    border: 2px solid white; 
+    color: white; 
+}
+
+.login-container.homepage .custom-submit:hover {
+    background: white; 
+    color: black; 
 }
 
 .login-container h2 {
@@ -289,4 +315,21 @@ p, .content {
     100% {
         opacity: 1;
     }
+}
+
+.description {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding-left: 20px;
+}
+
+.description-content {
+    flex: 1;
+    margin-right: 20px; /* Adjust as needed */
+}
+
+.description img {
+    max-width: 100%; /* Ensure the image doesn't exceed its container */
+    padding-right: 20px;
 }
