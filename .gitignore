@@ -1,0 +1,5 @@
+# Node modules
+backend/create/node_modules
+backend/search/node_modules
+#dotenvs
+.env

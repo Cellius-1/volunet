@@ -1,0 +1,17 @@
+{
+  "name": "volunet-create",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "dev": "npx @google-cloud/functions-framework --target=create"
+  },
+  "dependencies": {
+    "@google-cloud/functions-framework": "^3.1.0",
+    "firebase": "^10.12.3",
+    "geofire-common": "^6.0.0"
+  },
+  "author": "",
+  "license": "MIT",
+  "description": "",
+  "type": "module"
+}
